@@ -1,0 +1,25 @@
+.rubensiki {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+}
+
+.ciacho {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+}
+
+.pkt {
+  height: 50px;
+  z-index: 2;
+}
+
+.plansza{
+  background-color: lightgray; 
+  box-sizing: border-box;
+  border: 5px solid black;
+  height: calc(100% - 50px);
+  width: 100%;
+}
