@@ -13,11 +13,11 @@
 
 .pkt {
   height: 50px;
-  z-index: 2;
+  display: inline-flex;
 }
 
 .plansza{
-  background-color: lightgray; 
+  background-color: lightgray;
   box-sizing: border-box;
   border: 5px solid black;
   height: calc(100% - 50px);

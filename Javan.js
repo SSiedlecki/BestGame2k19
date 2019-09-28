@@ -6,6 +6,7 @@ window.onload = function() {
   player.style.top = 63;
   player.style.left = 14;
   var arena = document.getElementById("arena");
+  var liczbaPunktow = 0;
   generujNoweKoordynaty(cookie, arena);
 
   document.onkeydown = document.onkeydown = function (e) {
@@ -15,7 +16,7 @@ window.onload = function() {
     if(e.key === 'ArrowDown'){
       przesunNaDol(player, przesuniecie);
     }
-    if(e.key === 'ArrowLeft'){
+    if(e.key === 'ArrowLeft' && !czyDotykaLewejSciany (arena, player)){
       przesunNaLewo (player, przesuniecie);
     }
     if(e.key === 'ArrowRight'){
@@ -24,6 +25,7 @@ window.onload = function() {
 
     if (czyPlayerDotykaCiastka(player, cookie)) {
       generujNoweKoordynaty(cookie, arena);
+      zwiekszLiczbePunktow();
     }
 
   }
@@ -56,7 +58,6 @@ window.onload = function() {
       player.style.left = player.getBoundingClientRect().left + przesuniecie;
     }
 
-
     function czyPlayerDotykaCiastka (player, cookie) {
       var rect1 = player.getBoundingClientRect();
       var rect2 = cookie.getBoundingClientRect();
@@ -71,4 +72,21 @@ window.onload = function() {
         cookie.style.top = Math.floor(Math.random() * (arena.getBoundingClientRect().top + arena.getBoundingClientRect().height-63 - 35) + 63);
         cookie.style.left = Math.floor(Math.random() * (arena.getBoundingClientRect().left + arena.getBoundingClientRect().width-14 - 35) + 14);
     }
+
+    function zwiekszLiczbePunktow(){
+      liczbaPunktow = liczbaPunktow + 1;
+      document.getElementById("liczbaPunktow").innerText = liczbaPunktow;
+    }
+
+    function czyDotykaLewejSciany (arena, player) {
+      var arenaRect = arena.getBoundingClientRect();
+      var playerRect = player.getBoundingClientRect();
+      return playerRect.x < arenaRect.x + 8;
+    }
+    function czyDotykaPrawejSciany (arena, player) {
+      var arenaRect = arena.getBoundingClientRect();
+      var playerRect = player.getBoundingClientRect();
+      return playerRect.x < arenaRect.x + 8;
+
+
 };
